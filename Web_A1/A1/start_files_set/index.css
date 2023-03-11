@@ -56,7 +56,16 @@ caption {
 
 /* new code */
  
-image-column {
-   display: flex;
-   justify-content: space-between;
+.image-column {
+   text-align: center;
+   vertical-align: middle;
+   width:10%;
+}
+
+.image-column img {
+   display: inline-block;
+}
+
+.column-title {
+   text-align: left;
 }
