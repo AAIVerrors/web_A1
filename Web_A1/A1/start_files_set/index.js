@@ -30,93 +30,235 @@ window.onload = function () {
     
     // update the books' information
     var bookTable = document.getElementById("bookTable");
-    
-    
-    for (var i = 0; i < bookList.length; i++){
-        var book = bookList[i];
-        var table = document.getElementById("bookTable");
-        // var row = table.insertRow();
-        // var cell1 = row.insertCell();
-        // var cell2 = row.insertCell();
-        // var cell3 = row.insertCell();
-        // var cell4 = row.insertCell();
-        // var cell5 = row.insertCell();
-        // var cell6 = row.insertCell();
-        // var cell7 = row.insertCell();
-        // var cell8 = row.insertCell();
-        // var cell9 = row.insertCell();
-        // // add the html
-        // cell1.innerHTML = '<input type="checkbox" name="select">';
-        // cell2.innerHTML = '<img src="' + bookList[i].img + '">';
-        // cell3.innerHTML = 'New Title';
-        // cell4.innerHTML = 'New Title';
-        // cell5.innerHTML = 'New Title';
-        // cell6.innerHTML = 'New Title';
-        // cell7.innerHTML = 'New Title';
-        // cell8.innerHTML = 'New Title';
-        // cell9.innerHTML = 'New Title';
-        var row =  document.createElement("tr"); // more maintanbility method
-        var c1 = document.createElement("td");
-        var c2 = document.createElement("td");
-        var c3 = document.createElement("td");
-        var c4 = document.createElement("td");
-        var c5 = document.createElement("td");
-        var c6 = document.createElement("td");
-        var c7 = document.createElement("td");
-        var c8 = document.createElement("td");
-        var c9 = document.createElement("td");
-        row.appendChild(c1);
-        row.appendChild(c2);
-        row.appendChild(c3);
-        row.appendChild(c4);
-        row.appendChild(c5);
-        row.appendChild(c6);
-        row.appendChild(c7);
-        row.appendChild(c8);
-        row.appendChild(c9);
-        table.appendChild(row);
-        // modify c1
-        var c1_input = document.createElement("input");
-        c1_input.type = "checkbox";
-        c1_input.name = "select";
-        c1.appendChild(c1_input);
-        // modify c2
-        var c2_img = document.createElement("img");
-        c2_img.id = "book-image";
-        c2_img.src = book.img;
-        c2.appendChild(c2_img);
-        // modify c3
-        var c3_title = document.createTextNode(book.title);
-        c3.appendChild(c3_title);
-        // modify c4
-        c4.className = "image-column";
-        var stars_num = book.rating;
-        for (var positive_rating = 0; positive_rating < stars_num; positive_rating ++){ // add positive stars
-            var c4_star = document.createElement("img");
-            c4_star.src = "images/star-16.ico";
-            c4.appendChild(c4_star);
+
+    // filter category
+    function displayCategory(category){
+        var if_has = 0;
+        for (var i = 0; i < bookList.length; i++){
+            var book = bookList[i];
+            if (book.category === category || category === '' || category === "All" || category === null){
+                if_has ++;
+                var table = document.getElementById("bookTable");
+                var row =  document.createElement("tr"); // more maintanbility method
+                row.className = "table-row";
+                var c1 = document.createElement("td");
+                var c2 = document.createElement("td");
+                var c3 = document.createElement("td");
+                var c4 = document.createElement("td");
+                var c5 = document.createElement("td");
+                var c6 = document.createElement("td");
+                var c7 = document.createElement("td");
+                var c8 = document.createElement("td");
+                var c9 = document.createElement("td");
+                row.appendChild(c1);
+                row.appendChild(c2);
+                row.appendChild(c3);
+                row.appendChild(c4);
+                row.appendChild(c5);
+                row.appendChild(c6);
+                row.appendChild(c7);
+                row.appendChild(c8);
+                row.appendChild(c9);
+                table.appendChild(row);
+                // modify c1
+                var c1_input = document.createElement("input");
+                c1_input.type = "checkbox";
+                c1_input.name = "select";
+                c1_input.className = "checkbox_class";
+                c1_input.id = "checkbox" + i;
+                c1.appendChild(c1_input);
+                // modify c2
+                var c2_img = document.createElement("img");
+                c2_img.id = "book-image";
+                c2_img.src = book.img;
+                c2.appendChild(c2_img);
+                // modify c3
+                var c3_title = document.createTextNode(book.title);
+                c3_title.className = "book-title";
+                c3.appendChild(c3_title);
+                // modify c4
+                c4.className = "image-column";
+                var stars_num = book.rating;
+                for (var positive_rating = 0; positive_rating < stars_num; positive_rating ++){ // add positive stars
+                    var c4_star = document.createElement("img");
+                    c4_star.src = "images/star-16.ico";
+                    c4.appendChild(c4_star);
+                }
+                for (var negative_rating = 0; negative_rating < (5-stars_num); negative_rating ++){ // add negative stars
+                    var c4_star = document.createElement("img");
+                    c4_star.src = "images/outline-star-16.ico";
+                    c4.appendChild(c4_star);
+                }
+                // modify c5
+                var c5_author = document.createTextNode(book.authors);
+                c5.appendChild(c5_author);
+                // modify c6
+                var c5_year = document.createTextNode(book.year);
+                c6.appendChild(c5_year);
+                // modify c7
+                var c5_price = document.createTextNode(book.price);
+                c7.appendChild(c5_price);
+                // modify c8
+                var c5_publisher = document.createTextNode(book.publisher);
+                c8.appendChild(c5_publisher);
+                // modify c9
+                var c5_category = document.createTextNode(book.category);
+                c9.appendChild(c5_category);
+            }
         }
-        for (var negative_rating = 0; negative_rating < (5-stars_num); negative_rating ++){ // add negative stars
-            var c4_star = document.createElement("img");
-            c4_star.src = "images/outline-star-16.ico";
-            c4.appendChild(c4_star);
+        if (if_has === 0){
+            alert("No books match your selected category! Select 'All' to display all books!");
         }
-        // modify c5
-        var c5_author = document.createTextNode(book.authors);
-        c5.appendChild(c5_author);
-        // modify c6
-        var c5_year = document.createTextNode(book.year);
-        c6.appendChild(c5_year);
-        // modify c7
-        var c5_price = document.createTextNode(book.price);
-        c7.appendChild(c5_price);
-        // modify c8
-        var c5_publisher = document.createTextNode(book.publisher);
-        c8.appendChild(c5_publisher);
-        // modify c9
-        var c5_category = document.createTextNode(book.category);
-        c9.appendChild(c5_category);
     }
 
+
+    function removeTableRows() {
+        var table = document.getElementById("bookTable");
+        while(table.rows.length > 0) {
+            table.deleteRow(0);
+        }
+    }
+
+    // remove all the high ligh to prepare for the another highlighting
+    function removeHighlights() {
+        var rows = document.getElementsByClassName("table-row");
+        for (var i = 0; i < rows.length; i++) {
+          rows[i].style.backgroundColor = null;
+        }
+    }
+
+
+    // highlight the books searched before 
+    function highlightBook(searchSpace) {
+        var rows = document.getElementsByClassName("table-row");
+        for (var i = 0; i < rows.length; i++){
+            var title = rows[i].childNodes[2].textContent.toLocaleLowerCase();
+            if (searchSpace === '' || searchSpace == null){
+                return;
+            }
+            else{
+                if (title.includes(searchSpace)){
+                    rows[i].style.backgroundColor  = 'blue';
+                }
+            }
+        }
+    }
+    
+
+    displayCategory("All");
+
+
+    // search and category
+    var searchBtn = document.getElementById("search-button");
+    var categoryBtn = document.getElementById("category-button");
+    var checkboxSqr = document.getElementsByClassName("checkbox_class");
+    var addToCartBtn = document.getElementById("add-cart");
+    var resetCartBtn = document.getElementById("reset-cart");
+    var searchSpace = '';
+    var categorySpace = '';
+    var cart = 0;
+
+    //set listener to every checkbox
+    for (var c = 0; c < checkboxSqr.length; c++){
+        var checkbox_Id = "checkbox" + c;
+        var checkboxCurrent = document.getElementById(checkbox_Id);
+        checkboxCurrent.addEventListener('click', function(){
+            var checkboxSqrInside = document.getElementsByClassName("checkbox_class");
+            for (var i = 0; i < checkboxSqrInside.length; i++){
+                if (this != checkboxSqrInside[i]){
+                    checkboxSqrInside[i].checked = false;
+                }
+            }
+        });
+    }
+    
+
+    // set listener to search button
+    searchBtn.addEventListener('click', function() {
+        var searchInput = document.getElementById("search-text");
+        var searchItem = searchInput.value.trim().toLowerCase();
+
+        searchSpace = searchItem;
+
+        if ((searchSpace === '' || searchSpace === null)) {
+            removeHighlights();
+            return;
+        }
+
+        // reset highlight
+        removeHighlights();
+
+        var if_has = 0;
+        var rows = document.getElementsByClassName("table-row");
+        for (var i = 0; i < rows.length; i++){
+            var title = rows[i].childNodes[2].textContent.toLocaleLowerCase();
+            if ((searchSpace !== '' || searchSpace !== null) ){
+                if (title.includes(searchSpace)){
+                    rows[i].style.backgroundColor  = 'blue';
+                    if_has ++;
+                }
+            }
+        }
+
+        if (if_has == 0){
+            alert("No book match your searching!")
+        }
+        console.log(categorySpace + "   " + searchSpace);
+
+    });
+
+
+    categoryBtn.addEventListener('click', function(){
+        var categoryInput = document.getElementById("category");
+        var categoryItem = categoryInput.options[categoryInput.selectedIndex].text.trim();
+
+        categorySpace = categoryItem;
+
+        // reset highlight
+        removeHighlights();
+        removeTableRows();
+        displayCategory(categorySpace);
+        highlightBook(searchSpace);
+
+
+        console.log(categorySpace + " +  " + searchSpace);
+    });
+
+
+    // add to cart
+    addToCartBtn.addEventListener('click', function() {
+        var checkedBook;
+        for (var cb of document.getElementsByClassName("checkbox_class")){
+            if (cb.checked){
+                checkedBook = cb;
+            }
+        }
+        var quantity = prompt("Please enter the quantity you want to add into cart.", "1");
+        if (quantity) {
+            const parsedQuantity = parseInt(quantity);
+            if (isNaN(parsedQuantity)) {
+                alert('Invalid quantity, please type number!');
+            }else{
+                // cart.push({book: checkedBook.childNodes[2].textContent, quantity: parseInt(quantity)});
+                cart += parsedQuantity;
+                checkedBook.checked = false;
+                cartNum(cart);
+            }
+        }
+    });
+
+
+    // clear cart
+    resetCartBtn.addEventListener("click", function(){
+        cart = 0;
+        cartNum(0);
+    });
+
+
+    // change cart num
+    function cartNum(num) {
+        var cart = document.getElementById("cart-num");
+        cart.textContent = "(" + num + ")";
+    }
 
 }

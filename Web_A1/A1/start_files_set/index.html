@@ -9,38 +9,34 @@
 <body>
    <form method="get" action="">
       <div id="searchBox">
-      
+         <input id="search-text" type="text">
+         <input id="search-button" type="button" value="search">
+         <select id="category" name="choice">
+            <option>Art</option>
+            <option>Science History</option>
+            <option>Action and Adventure</option>
+            <option>Health</option>
+            <option>Science Fiction</option>
+            <option>test option</option>
+            <option>All</option>
+         </select>
+         <input id="category-button" type="button" value="Filter">
+         <input id="add-cart" type="button" value="Add to cart">
+         <input id="reset-cart" type="button" value="Reset the cart">
+         <img id="cart" src="images/shopping_cart.png">
+         <p id="cart-num">(0)</p>
       </div>
       <div id="listBox">
          <table id="bookTable">
             <tr>
-               <th class="column-title"></th>
-               <th class="column-title"></th>
-               <th class="column-title"><Strong>Title</Strong></th>
-               <th class="column-title"></th>
+               <th colspan="2" class="column-title"></th>
+               <th colspan="2" class="column-title"><Strong>Title</Strong></th>
                <th class="column-title"><Strong>Authors</Strong></th>
                <th class="column-title"><Strong>Year</Strong></th>
                <th class="column-title"><Strong>Price</Strong></th>
                <th class="column-title"><Strong>Publisher</Strong></th>
                <th class="column-title"><Strong>Category</Strong></th>
             </tr>
-            <!-- <tr>
-               <td><input type="checkbox" name="select"></td>
-               <td><img id="book-image" src="images/01.jpg"></td>
-               <td>this is title</td>
-               <td class="image-column">
-                  <img src="images/star-16.ico">
-                  <img src="images/star-16.ico">
-                  <img src="images/star-16.ico">
-                  <img src="images/star-16.ico">
-                  <img src="images/star-16.ico">
-               </td>
-               <td>this is Authors</td>
-               <td>this is year</td>
-               <td>1234</td>
-               <td>asdsfghjk</td>
-               <td>sfvcxv</td>
-            </tr> -->
          </table>
       </div>   
    </form>
