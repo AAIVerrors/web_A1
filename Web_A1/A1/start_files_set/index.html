@@ -1,44 +1,55 @@
 <!DOCTYPE html>
 <html>
+
 <head lang="en">
    <meta charset="utf-8">
    <title>COMP5347 Assignment One</title>
    <link rel="stylesheet" href="index.css" />
    <script type="text/javascript" src="index.js"></script>
 </head>
+
 <body>
-   <form method="get" action="">
+   <form id="form" method="get" action="">
       <div id="searchBox">
-         <input id="search-text" type="text">
-         <input id="search-button" type="button" value="search">
-         <select id="category" name="choice">
-            <option>Art</option>
-            <option>Science History</option>
-            <option>Action and Adventure</option>
-            <option>Health</option>
-            <option>Science Fiction</option>
-            <option>test option</option>
-            <option>All</option>
-         </select>
-         <input id="category-button" type="button" value="Filter">
-         <input id="add-cart" type="button" value="Add to cart">
-         <input id="reset-cart" type="button" value="Reset the cart">
-         <img id="cart" src="images/shopping_cart.png">
-         <p id="cart-num">(0)</p>
+         <div id="searchBox1"><input id="search-text" type="text"></div>
+         <div id="searchBox2"><input id="search-button" type="button" value="search"></div>
+         <div id="searchBox3">
+            <select id="category" name="choice">
+               <option>Art</option>
+               <option>Science History</option>
+               <option>Action and Adventure</option>
+               <option>Health</option>
+               <option>Science Fiction</option>
+               <option>test option</option>
+               <option>All</option>
+            </select>
+         </div>
+         <div id="searchBox4"><input id="category-button" type="button" value="Filter"></div>
+         <div id="searchBox5"><label>Change Theme</label></div>
+         <div id="searchBox6"><input id="LD-button" type="checkbox" value="Light"></div>
+         <div id="searchBox7"><input id="add-cart" type="button" value="Add to cart"></div>
+         <div id="searchBox8"><input id="reset-cart" type="button" value="Reset the cart"></div>
+         <div id="searchBox9"><img id="cart" src="images/shopping_cart.png"></div>
+         <div id="searchBox10"><h4 id="cart-num">(0)</h4></div>
       </div>
       <div id="listBox">
          <table id="bookTable">
-            <tr>
-               <th colspan="2" class="column-title"></th>
-               <th colspan="2" class="column-title"><Strong>Title</Strong></th>
-               <th class="column-title"><Strong>Authors</Strong></th>
-               <th class="column-title"><Strong>Year</Strong></th>
-               <th class="column-title"><Strong>Price</Strong></th>
-               <th class="column-title"><Strong>Publisher</Strong></th>
-               <th class="column-title"><Strong>Category</Strong></th>
-            </tr>
+            <caption></caption>
+            <thead>
+               <tr id="row2">
+                  <th colspan="2" class="column-title"></th>
+                  <th colspan="2" class="column-title"><Strong>Title</Strong></th>
+                  <th class="column-title"><Strong>Authors</Strong></th>
+                  <th class="column-title"><Strong>Year</Strong></th>
+                  <th class="column-title"><Strong>Price</Strong></th>
+                  <th class="column-title"><Strong>Publisher</Strong></th>
+                  <th class="column-title"><Strong>Category</Strong></th>
+               </tr>
+            </thead>
+            <tbody id="table-body"></tbody>
          </table>
-      </div>   
+      </div>
    </form>
 </body>
+
 </html>

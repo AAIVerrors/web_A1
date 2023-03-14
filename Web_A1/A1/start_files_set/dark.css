@@ -1,0 +1,122 @@
+/* general text formatting */
+
+h1,
+h2,
+h3,
+nav,
+footer {
+    font-family: Georgia, Cambria, "Times New Roman", serif;
+    color: white;
+}
+
+body {
+    font-family: "Lucida Sans", Verdana, Arial, sans-serif;
+    font-size: 80%;
+    background-color: black;
+    color: white;
+}
+
+div#searchBox,
+div#listBox {
+    margin: 0.25em auto;
+    background-color: black;
+    color: white;
+    padding: 1em;
+    border: 1pt solid #95BEF0;
+    width: 80%;
+}
+
+div#searchBox {
+    margin-top: 1em;
+}
+
+div#listBox {
+    margin-top: 1em;
+    background-color: black;
+    color: white;
+}
+
+table {
+    border: collapse;
+    border-spacing: 0;
+    background-color: black;
+    color: white;
+}
+
+table tbody td {
+    border-top: 1pt solid #95BEF0;
+    line-height: 1.5em;
+    vertical-align: middle;
+    padding: 0.5em 0.75em;
+    background-color: black;
+    color: white;
+}
+
+table thead th {
+    text-align: left;
+    padding: 0.25em 0.75em;
+}
+
+table thead {
+    background-color: black;
+    color: white;
+}
+
+table tbody td:first-child {
+    text-align: center;
+    padding: 0.5em 0em;
+}
+
+caption {
+    background-color: black;
+    padding: 0.5em 0.5em;
+    font-weight: bold;
+    font-size: 1.2em;
+    color: white;
+}
+
+
+/* new code */
+
+.image-column {
+    text-align: center;
+    vertical-align: middle;
+    width: 10%;
+    background-color: black;
+    color: white;
+}
+
+.image-column img {
+    display: inline-block;
+    background-color: black;
+    color: white;
+}
+
+.column-title {
+    text-align: left;
+    background-color: black;
+    color: white;
+}
+
+td {
+    color: white;
+}
+
+button {
+    background-color: black;
+    border: 1px solid white;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+input,
+select {
+    background-color: black;
+    border: 1px solid white;
+    color: white;
+}
+
+label {
+    color: white;
+}

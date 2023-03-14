@@ -38,7 +38,7 @@ window.onload = function () {
             var book = bookList[i];
             if (book.category === category || category === '' || category === "All" || category === null){
                 if_has ++;
-                var table = document.getElementById("bookTable");
+                var table = document.getElementById("table-body");
                 var row =  document.createElement("tr"); // more maintanbility method
                 row.className = "table-row";
                 var c1 = document.createElement("td");
@@ -69,7 +69,7 @@ window.onload = function () {
                 c1.appendChild(c1_input);
                 // modify c2
                 var c2_img = document.createElement("img");
-                c2_img.id = "book-image";
+                c2_img.classList = "book-image";
                 c2_img.src = book.img;
                 c2.appendChild(c2_img);
                 // modify c3
@@ -113,7 +113,7 @@ window.onload = function () {
 
 
     function removeTableRows() {
-        var table = document.getElementById("bookTable");
+        var table = document.getElementById("table-body");
         while(table.rows.length > 0) {
             table.deleteRow(0);
         }
@@ -154,6 +154,7 @@ window.onload = function () {
     var checkboxSqr = document.getElementsByClassName("checkbox_class");
     var addToCartBtn = document.getElementById("add-cart");
     var resetCartBtn = document.getElementById("reset-cart");
+    var LDBtn = document.getElementById("LD-button");
     var searchSpace = '';
     var categorySpace = '';
     var cart = 0;
@@ -228,23 +229,31 @@ window.onload = function () {
     // add to cart
     addToCartBtn.addEventListener('click', function() {
         var checkedBook;
+        var have_checked = false;
         for (var cb of document.getElementsByClassName("checkbox_class")){
             if (cb.checked){
                 checkedBook = cb;
+                have_checked = true;
             }
         }
-        var quantity = prompt("Please enter the quantity you want to add into cart.", "1");
-        if (quantity) {
-            const parsedQuantity = parseInt(quantity);
-            if (isNaN(parsedQuantity)) {
-                alert('Invalid quantity, please type number!');
-            }else{
-                // cart.push({book: checkedBook.childNodes[2].textContent, quantity: parseInt(quantity)});
-                cart += parsedQuantity;
-                checkedBook.checked = false;
-                cartNum(cart);
+        if (have_checked === false){
+            alert('Please check any book, then add to cart!');
+        }
+        else{
+            var quantity = prompt("Please enter the quantity you want to add into cart.", "1");
+            if (quantity) {
+                const parsedQuantity = parseInt(quantity);
+                if (isNaN(parsedQuantity)) {
+                    alert('Invalid quantity, please type number!');
+                }else{
+                    // cart.push({book: checkedBook.childNodes[2].textContent, quantity: parseInt(quantity)});
+                    cart += parsedQuantity;
+                    checkedBook.checked = false;
+                    cartNum(cart);
+                }
             }
         }
+        
     });
 
 
@@ -260,5 +269,22 @@ window.onload = function () {
         var cart = document.getElementById("cart-num");
         cart.textContent = "(" + num + ")";
     }
+
+
+    // light dark button
+    LDBtn.addEventListener('click', function toggleTheme() {
+        // Obtains an array of all <link>
+        // elements.
+        // Select your element using indexing.
+        var theme = document.getElementsByTagName('link')[0];
+
+        // Change the value of href attribute 
+        // to change the css sheet.
+        if (theme.getAttribute('href') == 'index.css') {
+            theme.setAttribute('href', 'dark.css');
+        } else {
+            theme.setAttribute('href', 'index.css');
+        }
+    });
 
 }
