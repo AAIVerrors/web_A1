@@ -1,60 +1,67 @@
 /* general text formatting */
-
+/* general text formatting */
 h1,
 h2,
 h3,
 nav,
 footer {
-    font-family: Georgia, Cambria, "Times New Roman", serif;
-    color: white;
+   font-family: Georgia, Cambria, "Times New Roman", serif;
 }
 
 body {
-    font-family: "Lucida Sans", Verdana, Arial, sans-serif;
-    font-size: 80%;
-    background-color: black;
-    color: white;
+   font-family: "Lucida Sans", Verdana, Arial, sans-serif;
+   font-size: 80%;
+   background-color: black;
+   color: white;
 }
 
 div#searchBox,
 div#listBox {
-    margin: 0.25em auto;
-    background-color: black;
-    color: white;
-    padding: 1em;
-    border: 1pt solid #95BEF0;
-    width: 80%;
+   margin: 0.25em auto;
+   background-color: black;
+   color: white;
+   padding: 1em;
+   border: 1pt solid #95BEF0;
+   width: 80%;
 }
 
 div#searchBox {
-    margin-top: 1em;
+   margin-top: 1em;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
 }
 
+#shopping-cart {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+
+}
+
+
 div#listBox {
-    margin-top: 1em;
-    background-color: black;
-    color: white;
+   margin-top: 1em;
+   background-color: black;
+   color: white;
 }
 
 table {
-    border: collapse;
-    border-spacing: 0;
-    background-color: black;
-    color: white;
+   border: collapse;
+   border-spacing: 0;
+
 }
 
 table tbody td {
-    border-top: 1pt solid #95BEF0;
-    line-height: 1.5em;
-    vertical-align: middle;
-    padding: 0.5em 0.75em;
-    background-color: black;
-    color: white;
+   border-top: 1pt solid #95BEF0;
+   line-height: 1.5em;
+   vertical-align: middle;
+   padding: 0.5em 0.75em;
 }
 
 table thead th {
-    text-align: left;
-    padding: 0.25em 0.75em;
+   text-align: left;
+   padding: 0.25em 0.75em;
 }
 
 table thead {
@@ -63,44 +70,53 @@ table thead {
 }
 
 table tbody td:first-child {
-    text-align: center;
-    padding: 0.5em 0em;
+   text-align: center;
+   padding: 0.5em 0em;
+}
+
+table tbody td:nth-child(3) {
+   font-style: italic;
 }
 
 caption {
     background-color: black;
-    padding: 0.5em 0.5em;
-    font-weight: bold;
-    font-size: 1.2em;
     color: white;
+   padding: 0.5em 0.5em;
+   font-weight: bold;
+   font-size: 1.2em;
+   height: 30px;
 }
 
 
 /* new code */
 
 .image-column {
-    text-align: center;
-    vertical-align: middle;
-    width: 10%;
-    background-color: black;
-    color: white;
+   text-align: center;
+   vertical-align: middle;
+   width: 10%;
 }
 
 .image-column img {
-    display: inline-block;
-    background-color: black;
-    color: white;
+   display: inline-block;
 }
 
 .column-title {
-    text-align: left;
-    background-color: black;
-    color: white;
+   text-align: left;
 }
 
-td {
-    color: white;
+/* new code  */
+
+.book-image {
+   height: 150px;
+   width: 100px;
 }
+
+#cart {
+   height: 25px;
+   width: 25px;
+   
+}
+
 
 button {
     background-color: black;
@@ -114,9 +130,5 @@ input,
 select {
     background-color: black;
     border: 1px solid white;
-    color: white;
-}
-
-label {
     color: white;
 }

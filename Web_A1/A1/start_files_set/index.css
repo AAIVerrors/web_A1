@@ -25,13 +25,14 @@ div#searchBox {
    margin-top: 1em;
    display: flex;
    align-items: center;
+   justify-content: space-between;
 }
 
-#searchBox10 {
-   float: right;
-}
-#searchBox9 {
-   float: right;
+#shopping-cart {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+
 }
 
 
