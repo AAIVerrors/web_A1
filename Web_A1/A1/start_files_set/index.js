@@ -138,7 +138,12 @@ window.onload = function () {
             }
             else{
                 if (title.includes(searchSpace)){
-                    rows[i].style.backgroundColor  = 'blue';
+                    if (document.getElementById("LD-button").checked){
+                        rows[i].style.backgroundColor  = 'red';
+                    }
+                    else{
+                        rows[i].style.backgroundColor  = 'blue';
+                    }
                 }
             }
         }
@@ -195,7 +200,12 @@ window.onload = function () {
             var title = rows[i].childNodes[2].textContent.toLocaleLowerCase();
             if ((searchSpace !== '' || searchSpace !== null) ){
                 if (title.includes(searchSpace)){
-                    rows[i].style.backgroundColor  = 'blue';
+                    if (document.getElementById("LD-button").checked){
+                        rows[i].style.backgroundColor  = 'red';
+                    }
+                    else{
+                        rows[i].style.backgroundColor  = 'blue';
+                    }
                     if_has ++;
                 }
             }
@@ -242,7 +252,7 @@ window.onload = function () {
         else{
             var quantity = prompt("Please enter the quantity you want to add into cart.", "1");
             if (quantity) {
-                const parsedQuantity = parseInt(quantity);
+                var parsedQuantity = parseInt(quantity);
                 if (isNaN(parsedQuantity)) {
                     alert('Invalid quantity, please type number!');
                 }else{
