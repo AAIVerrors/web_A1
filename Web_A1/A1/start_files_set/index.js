@@ -109,6 +109,9 @@ window.onload = function () {
         if (if_has === 0){
             alert("No books match your selected category! Select 'All' to display all books!");
         }
+        else{
+            signleChecked();
+        }
     }
 
 
@@ -148,6 +151,21 @@ window.onload = function () {
             }
         }
     }
+
+    //set listener to every checkbox
+    function signleChecked(){
+        var checkboxSqr1 = document.getElementsByClassName("checkbox_class");
+        for (var c = 0; c < checkboxSqr1.length; c++){
+            checkboxSqr1[c].addEventListener('click', function(){
+                var checkboxSqrInside = document.getElementsByClassName("checkbox_class");
+                for (var i = 0; i < checkboxSqrInside.length; i++){
+                    if (this != checkboxSqrInside[i]){
+                        checkboxSqrInside[i].checked = false;
+                    }
+                }
+            });
+        }
+    }
     
 
     displayCategory("All");
@@ -164,20 +182,6 @@ window.onload = function () {
     var categorySpace = '';
     var cart = 0;
 
-    //set listener to every checkbox
-    for (var c = 0; c < checkboxSqr.length; c++){
-        var checkbox_Id = "checkbox" + c;
-        var checkboxCurrent = document.getElementById(checkbox_Id);
-        checkboxCurrent.addEventListener('click', function(){
-            var checkboxSqrInside = document.getElementsByClassName("checkbox_class");
-            for (var i = 0; i < checkboxSqrInside.length; i++){
-                if (this != checkboxSqrInside[i]){
-                    checkboxSqrInside[i].checked = false;
-                }
-            }
-        });
-    }
-    
 
     // set listener to search button
     searchBtn.addEventListener('click', function() {
@@ -219,6 +223,7 @@ window.onload = function () {
     });
 
 
+    // add envent to category button
     categoryBtn.addEventListener('click', function(){
         var categoryInput = document.getElementById("category");
         var categoryItem = categoryInput.options[categoryInput.selectedIndex].text.trim();
