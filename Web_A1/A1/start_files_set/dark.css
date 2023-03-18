@@ -132,3 +132,11 @@ select {
     border: 1px solid white;
     color: white;
 }
+
+.table-row[data-searched="yes"] {
+   background-color: grey;
+}
+
+.table-row[data-searched="no"] {
+   background-color: black;
+}

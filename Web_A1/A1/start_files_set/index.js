@@ -41,6 +41,7 @@ window.onload = function () {
                 var table = document.getElementById("table-body");
                 var row =  document.createElement("tr"); // more maintanbility method
                 row.className = "table-row";
+                row.setAttribute("data-searched", "no");
                 var c1 = document.createElement("td");
                 var c2 = document.createElement("td");
                 var c3 = document.createElement("td");
@@ -126,7 +127,7 @@ window.onload = function () {
     function removeHighlights() {
         var rows = document.getElementsByClassName("table-row");
         for (var i = 0; i < rows.length; i++) {
-          rows[i].style.backgroundColor = null;
+            rows[i].setAttribute("data-searched", "no");
         }
     }
 
@@ -141,12 +142,7 @@ window.onload = function () {
             }
             else{
                 if (title.includes(searchSpace)){
-                    if (document.getElementById("LD-button").checked){
-                        rows[i].style.backgroundColor  = 'red';
-                    }
-                    else{
-                        rows[i].style.backgroundColor  = 'blue';
-                    }
+                    rows[i].setAttribute("data-searched", "yes");
                 }
             }
         }
@@ -198,18 +194,14 @@ window.onload = function () {
         // reset highlight
         removeHighlights();
 
+        // search the books and then highlight it
         var if_has = 0;
         var rows = document.getElementsByClassName("table-row");
         for (var i = 0; i < rows.length; i++){
             var title = rows[i].childNodes[2].textContent.toLocaleLowerCase();
             if ((searchSpace !== '' || searchSpace !== null) ){
                 if (title.includes(searchSpace)){
-                    if (document.getElementById("LD-button").checked){
-                        rows[i].style.backgroundColor  = 'red';
-                    }
-                    else{
-                        rows[i].style.backgroundColor  = 'blue';
-                    }
+                    rows[i].setAttribute("data-searched", "yes");
                     if_has ++;
                 }
             }
