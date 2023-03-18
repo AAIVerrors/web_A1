@@ -117,3 +117,8 @@ caption {
 .table-row[data-searched="no"] {
    background-color: white;
 }
+
+
+input[type=button] {
+   margin: 0.1em;
+}

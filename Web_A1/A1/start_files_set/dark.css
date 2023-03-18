@@ -117,15 +117,6 @@ caption {
    
 }
 
-
-button {
-    background-color: black;
-    border: 1px solid white;
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-}
-
 input,
 select {
     background-color: black;
@@ -139,4 +130,8 @@ select {
 
 .table-row[data-searched="no"] {
    background-color: black;
+}
+
+input[type=button] {
+   margin: 0.1em;
 }
