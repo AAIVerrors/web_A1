@@ -27,10 +27,8 @@ getJsonObject('data.json',
 
 
 window.onload = function () {
-    
     // update the books' information
     var bookTable = document.getElementById("bookTable");
-
     // filter category
     function displayCategory(category){
         var if_has = 0;
@@ -164,6 +162,7 @@ window.onload = function () {
     }
     
 
+    // show all books
     displayCategory("All");
 
 
@@ -183,22 +182,20 @@ window.onload = function () {
     searchBtn.addEventListener('click', function() {
         var searchInput = document.getElementById("search-text");
         var searchItem = searchInput.value.trim().toLowerCase();
-
         searchSpace = searchItem;
-
+        // if there is nothing in search space, then no books will be seleted
         if ((searchSpace === '' || searchSpace === null)) {
             removeHighlights();
             return;
         }
-
         // reset highlight
         removeHighlights();
-
         // search the books and then highlight it
         var if_has = 0;
         var rows = document.getElementsByClassName("table-row");
         for (var i = 0; i < rows.length; i++){
             var title = rows[i].childNodes[2].textContent.toLocaleLowerCase();
+            // when some words in search space
             if ((searchSpace !== '' || searchSpace !== null) ){
                 if (title.includes(searchSpace)){
                     rows[i].setAttribute("data-searched", "yes");
@@ -206,12 +203,10 @@ window.onload = function () {
                 }
             }
         }
-
         if (if_has == 0){
             alert("No book match your searching!")
         }
         console.log(categorySpace + "   " + searchSpace);
-
     });
 
 
@@ -219,15 +214,12 @@ window.onload = function () {
     categoryBtn.addEventListener('click', function(){
         var categoryInput = document.getElementById("category");
         var categoryItem = categoryInput.options[categoryInput.selectedIndex].text.trim();
-
         categorySpace = categoryItem;
-
         // reset highlight
         removeHighlights();
         removeTableRows();
         displayCategory(categorySpace);
         highlightBook(searchSpace);
-
 
         console.log(categorySpace + " +  " + searchSpace);
     });
@@ -243,6 +235,7 @@ window.onload = function () {
                 have_checked = true;
             }
         }
+        // when user didn't select any book, alert
         if (have_checked === false){
             alert('Please check any book, then add to cart!');
         }
@@ -250,24 +243,30 @@ window.onload = function () {
             var quantity = prompt("Please enter the quantity you want to add into cart.", "1");
             if (quantity) {
                 var parsedQuantity = parseInt(quantity);
+                // when user enter non-number, alert
                 if (isNaN(parsedQuantity)) {
                     alert('Invalid quantity, please type number!');
                 }else{
-                    // cart.push({book: checkedBook.childNodes[2].textContent, quantity: parseInt(quantity)});
-                    cart += parsedQuantity;
-                    checkedBook.checked = false;
-                    cartNum(cart);
+                    if (parsedQuantity <= 0){
+                        alert('You should enter integer above 0!');
+                    }
+                    else{
+                        cart += parsedQuantity;
+                        checkedBook.checked = false;
+                        cartNum(cart);
+                    }
                 }
             }
         }
-        
     });
 
 
     // clear cart
     resetCartBtn.addEventListener("click", function(){
-        cart = 0;
-        cartNum(0);
+        if (confirm('Are you sure you want to reset?')){
+            cart = 0;
+            cartNum(0);
+        }
     });
 
 
@@ -284,7 +283,6 @@ window.onload = function () {
         // elements.
         // Select your element using indexing.
         var theme = document.getElementsByTagName('link')[0];
-
         // Change the value of href attribute 
         // to change the css sheet.
         if (theme.getAttribute('href') == 'index.css') {

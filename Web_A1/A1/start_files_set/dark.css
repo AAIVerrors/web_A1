@@ -65,8 +65,8 @@ table thead th {
 }
 
 table thead {
-    background-color: black;
-    color: white;
+   background-color: black;
+   color: white;
 }
 
 table tbody td:first-child {
@@ -79,8 +79,8 @@ table tbody td:nth-child(3) {
 }
 
 caption {
-    background-color: goldenrod;
-    color: white;
+   background-color: goldenrod;
+   color: white;
    padding: 0.5em 0.5em;
    font-weight: bold;
    font-size: 1.2em;
@@ -114,14 +114,14 @@ caption {
 #cart {
    height: 25px;
    width: 25px;
-   
+
 }
 
 input,
 select {
-    background-color: black;
-    border: 1px solid white;
-    color: white;
+   background-color: black;
+   border: 1px solid white;
+   color: white;
 }
 
 .table-row[data-searched="yes"] {
